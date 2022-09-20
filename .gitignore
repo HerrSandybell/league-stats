@@ -21,3 +21,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+backend/league-stats/node_modules
+backend/league-stats/.aws-sam
