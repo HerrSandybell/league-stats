@@ -1,0 +1,16 @@
+.match-stats {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+    padding: 5px 10px;
+}
+
+.items {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.item {
+    margin: 5px;
+}

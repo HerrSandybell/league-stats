@@ -1,0 +1,35 @@
+.summoner-input__control {
+    background-color: white;
+    display: grid;
+    grid-template-columns: 1fr 10%;
+    margin: 10px auto;
+    padding: 5px;
+    border-radius: 10px;
+    max-width: 80%;
+}
+
+.summoner-input__control input {
+    border: none;
+}
+
+.summoner-input__button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.summoner-input__button svg {
+    height: 25px;
+}
+
+.summoner-input__button path {
+    fill: darkblue
+}
+
+.summoner-input__button path:hover {
+    fill: darkgray
+}
