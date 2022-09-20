@@ -15,10 +15,18 @@ function MatchStats (props) {
 
         if (timeDiffDays < 2 && timeDiff >= 1) {
             return `Yesterday`;
-        } else if (timeDiffDays > 2) {
+        }
+
+        if (timeDiffDays > 2) {
             return `${Math.floor(timeDiffDays)} days ago`;
-        } else {
-            return `${Math.floor(timeDiffDays) * 24} hours ago`;
+        }
+
+        if (timeDiffDays < 1) {
+            return `${Math.floor(timeDiffDays)} hours ago`;
+        }
+
+        if (!timeDiffDays) {
+            return '>1 year ago';
         }
     };
 
