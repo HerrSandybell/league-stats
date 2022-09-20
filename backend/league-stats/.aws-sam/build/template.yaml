@@ -1,12 +1,11 @@
-AWSTemplateFormatVersion: "2010-09-09"
+AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
-
 Resources:
   HelloWorldFunction:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: "Battlefy-League-Stats-Get-Matches"
-      CodeUri: src/GetMatches/
+      FunctionName: Battlefy-League-Stats-Get-Matches
+      CodeUri: HelloWorldFunction
       Handler: index.handler
       Runtime: nodejs14.x
       MemorySize: 256
@@ -22,39 +21,41 @@ Resources:
           Properties:
             Path: /matches/{summoner}
             Method: GET
-            RestApiId: !Ref RESTApi
-
+            RestApiId:
+              Ref: RESTApi
+    Metadata:
+      SamResourceId: HelloWorldFunction
   RESTApi:
     Type: AWS::Serverless::Api
     Properties:
-      Name: "League-Stats-REST-Api"
-      StageName: "dev"
+      Name: League-Stats-REST-Api
+      StageName: dev
       EndpointConfiguration:
         Type: Regional
       Tags:
         Project: League-Stats
       Models:
         ValidatorModel:
-          $schema: "http://json-schema.org/draft-04/schema#"
+          $schema: http://json-schema.org/draft-04/schema#
           properties:
             base:
               type: string
           type: object
-
   Default5XX:
     Type: AWS::ApiGateway::GatewayResponse
     Properties:
       ResponseParameters:
-        gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
-        gatewayresponse.header.Access-Control-Allow-Headers: "'*'"
+        gatewayresponse.header.Access-Control-Allow-Origin: '''*'''
+        gatewayresponse.header.Access-Control-Allow-Headers: '''*'''
       ResponseType: DEFAULT_5XX
-      RestApiId: !Ref RESTApi
-
+      RestApiId:
+        Ref: RESTApi
   Default4XX:
     Type: AWS::ApiGateway::GatewayResponse
     Properties:
       ResponseParameters:
-        gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
-        gatewayresponse.header.Access-Control-Allow-Headers: "'*'"
+        gatewayresponse.header.Access-Control-Allow-Origin: '''*'''
+        gatewayresponse.header.Access-Control-Allow-Headers: '''*'''
       ResponseType: DEFAULT_4XX
-      RestApiId: !Ref RESTApi
+      RestApiId:
+        Ref: RESTApi
