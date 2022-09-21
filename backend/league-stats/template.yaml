@@ -13,7 +13,7 @@ Resources:
       Timeout: 30
       Environment:
         Variables:
-          RIOT_API_KEY: RGAPI-551ff8ea-f663-4d36-a708-a1bbfe739511
+          RIOT_API_KEY: { api_key }
       Tags:
         Project: League-Stats
       Events:
